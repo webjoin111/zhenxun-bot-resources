@@ -2,6 +2,6 @@
   "name": "通用插件帮助手册",
   "entrypoint": "main.html",
   "render_options": {
-    "viewport": { "width": 1680, "height": 20 }
+    "viewport": { "width": 1900, "height": 20 }
   }
 }

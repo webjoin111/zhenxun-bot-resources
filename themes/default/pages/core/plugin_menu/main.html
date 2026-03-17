@@ -57,39 +57,43 @@
         {% for category in data.categories %}
         {% set current_color = colors[loop.index0 % colors|length] %}
         <div class="category-card {{ current_color }}">
-        <div class="cat-header">
-            <div class="cat-title">{{ category.name }}</div>
-            <div class="cat-count">{{ category.items | length }}</div>
-        </div>
-
-        <div class="plugin-list">
-            {% if category.items | length == 0 %}
-            <div style="text-align: center; padding: 20px; color: #ccc; font-size: 13px;">暂无功能</div>
-            {% else %}
-            {% for item in category.items %}
-            <div class="plugin-item {% if not item.status %}disabled{% endif %}">
-                <span class="p-id">{{ item.id }}</span>
-
-                <div class="p-content">
-                    <div class="p-name">{{ item.name }}</div>
-                    {% if data.is_detail and item.commands %}
-                    <div class="p-commands">
-                        {% for cmd in item.commands %}
-                        <span class="cmd-tag">{{ cmd }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-
-                <div class="badges">
-                    {% if item.has_superuser_help %}
-                    <span class="badge super">S</span>
-                    {% endif %}
-                </div>
+            <div class="cat-header">
+                <div class="cat-title">{{ category.name }}</div>
+                <div class="cat-count">{{ category.items | length }}</div>
             </div>
-            {% endfor %}
-            {% endif %}
-        </div>
+
+            <div class="plugin-list">
+                {% if category.items | length == 0 %}
+                <div style="text-align: center; padding: 20px; color: #ccc; font-size: 13px;">暂无功能</div>
+                {% else %}
+                {% for item in category.items %}
+                <div class="plugin-item {% if item.status != 0 %}disabled{% endif %}">
+                    <span class="p-id">{{ item.id }}</span>
+
+                    <div class="p-content">
+                        <div class="p-name">{{ item.name }}</div>
+                        {% if data.is_detail and item.commands %}
+                        <div class="p-commands">
+                            {% for cmd in item.commands %}
+                            <span class="cmd-tag">{{ cmd }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="badges">
+                        {% if item.status == 3 %}
+                        <span class="badge status-global" title="全局关闭">⊘</span>
+                        {% elif item.status == 2 %}
+                        <span class="badge status-su" title="系统锁定">🔒</span>
+                        {% elif item.status == 1 %}
+                        <span class="badge status-group" title="群内关闭">−</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>

@@ -393,8 +393,29 @@ body {
   line-height: 1;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.badge.super {
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+.badge.status-global,
+.badge.status-su,
+.badge.status-group {
+  background: transparent !important;
+  box-shadow: none !important;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.badge.status-global {
+  color: #ff4757;
+  font-size: 18px;
+}
+
+.badge.status-su {
+  color: #57606f;
+  font-size: 16px;
+}
+
+.badge.status-group {
+  color: #a4b0be;
+  font-size: 20px;
 }
 
 .footer-deco {

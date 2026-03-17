@@ -43,46 +43,42 @@
     </div>
     {% endif %}
 
-    {% for section in data.sections %}
-    {% if loop.index == 1 %}
-    <div class="info-box intro-glass">
-        <div class="intro-icon">
-            {{ icons.info(size=24) }}
-        </div>
-        <div class="intro-content-wrapper">
-            <div class="intro-title-simple">{{ section.title }}</div>
-            <div class="section-content intro-text">
+    <div class="sections-container">
+        {% for section in data.sections %}
+        <div class="help-card">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <div class="title-icon">
+                        {% if '简介' in section.title %}
+                            {{ icons.file_text(size=22) }}
+                        {% elif '管理员' in section.title %}
+                            {{ icons.shield_check(size=22) }}
+                        {% elif '超级用户' in section.title %}
+                            {{ icons.wand(size=22) }}
+                        {% else %}
+                            {{ icons.info(size=22) }}
+                        {% endif %}
+                    </div>
+                    <span class="title-text">{{ section.title }}</span>
+                    <span class="section-subtitle">{% if '简介' in section.title %}{% elif '管理员' in section.title %}ADMIN COMMANDS{% elif '超级用户' in section.title %}ROOT ACCESS{% endif %}</span>
+                </h2>
+            </div>
+
+            <div class="section-content">
                 {% for line in section.content %}
                 <div class="markdown-content">{{ line | md | safe }}</div>
                 {% endfor %}
             </div>
+
+            {% if loop.last %}
+            {% set random_footer = random_asset('ui/img-random') %}
+            {% if random_footer %}
+            <img src="{{ random_footer }}" class="info-box-deco" alt="decoration">
+            {% endif %}
+            {% endif %}
         </div>
-    </div>
-    {% elif loop.index == 2 %}
-    {% call borders.tech_box(class="info-box") %}
-    <h2 class="section-title">{{ section.title }}</h2>
-    <div class="section-content">
-        {% for line in section.content %}
-        <div class="markdown-content">{{ line | md | safe }}</div>
         {% endfor %}
     </div>
-    {% set random_footer = random_asset('ui/img-random') %}
-    {% if random_footer %}
-    <img src="{{ random_footer }}" class="info-box-deco" alt="decoration">
-    {% endif %}
-    {% endcall %}
-    {% else %}
-    <div class="info-box">
-        <h2 class="section-title">{{ section.title }}</h2>
-        <div class="section-content">
-            {% for line in section.content %}
-            <div class="markdown-content">{{ line | md | safe }}</div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-    {% if not loop.last %}<div class="divider"></div>{% endif %}
-    {% endfor %}
 
     <div class="divider"></div>
     {% include 'partials/_footer.html' %}

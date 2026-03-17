@@ -13,5 +13,10 @@
             {% endfor %}
         </div>
         {% endif %}
+        {% if data.extra %}
+        <div class="user-info-extra" style="margin-top: 6px;">
+            {{ render(data.extra) }}
+        </div>
+        {% endif %}
     </div>
 {% endcall %}

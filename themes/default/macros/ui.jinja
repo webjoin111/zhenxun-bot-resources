@@ -3,7 +3,11 @@
 {# 1. 通用徽章 (Badge) #}
 {# 使用原子化类 (Scheme D) 和 CSS 变量 (Scheme C) #}
 {% macro badge(text, color='primary', rounded=False) %}
-<span style="display: inline-flex; align-items: center; padding: 4px 8px; font-size: 12px; line-height: 1; font-weight: bold; border-radius: {{ '9999px' if rounded else '4px' }}; background-color: var(--color-{{ color }}); color: var(--color-text-light);">
+ <span style="display: inline-flex; align-items: center; padding: 4px 10px; font-size: 12px; line-height: 1; font-weight: 800; border-radius: {{ '9999px' if rounded else '6px' }}; 
+               background-color: color-mix(in srgb, var(--color-{{ color }}, #909399) 15%, white); 
+               color: var(--color-{{ color }}, #606266); 
+               border: 1px solid color-mix(in srgb, var(--color-{{ color }}, #909399) 30%, white);
+               letter-spacing: 0.5px;">
     {{ text }}
 </span>
 {% endmacro %}

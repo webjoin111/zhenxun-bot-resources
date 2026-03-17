@@ -13,7 +13,11 @@
     "accent_green": "#67C23A",
     "accent_red": "#F56C6C",
     "accent_warning": "#E8BB88",
-    "accent_blue": "#409EFF"
+    "accent_blue": "#409EFF",
+    "success": "#67C23A",
+    "info": "#909399",
+    "error": "#F56C6C",
+    "warning": "#E8BB88"
   },
   "component_colors": {
     "global": {
@@ -71,11 +75,20 @@
       "usage_border": { "value": "#f0b6ca", "maps_to": "border_light" }
     },
     "plugin_menu": {
-        "header_bg": { "value": "#f67186", "maps_to": "primary" },
-        "text_light": { "value": "#f0f0f0", "maps_to": "text_light" },
-        "category_card_bg": { "value": "rgba(255, 255, 255, 0.9)", "maps_to": "background_main" },
-        "category_card_border": { "value": "rgba(246, 113, 134, 0.2)", "maps_to": "border_light"},
-        "item_bg": { "value": "rgba(246, 113, 134, 0.05)", "maps_to": "background_card"}
+      "header_bg": { "value": "#f67186", "maps_to": "primary" },
+      "text_light": { "value": "#f0f0f0", "maps_to": "text_light" },
+      "category_card_bg": {
+        "value": "rgba(255, 255, 255, 0.9)",
+        "maps_to": "background_main"
+      },
+      "category_card_border": {
+        "value": "rgba(246, 113, 134, 0.2)",
+        "maps_to": "border_light"
+      },
+      "item_bg": {
+        "value": "rgba(246, 113, 134, 0.05)",
+        "maps_to": "background_card"
+      }
     },
     "table": {
       "header_text": { "value": "#ad1457", "maps_to": "primary_dark" },
@@ -85,10 +98,10 @@
       "container_bg": { "value": "#EAEDF2", "maps_to": "background_card" }
     },
     "header": {
-        "text": { "value": "#334762", "maps_to": "text_dark" }
+      "text": { "value": "#334762", "maps_to": "text_dark" }
     },
     "tip": {
-        "text": { "value": "#666666", "maps_to": "text_muted" }
+      "text": { "value": "#666666", "maps_to": "text_muted" }
     },
     "shop": {
       "page_bg": { "value": "#fbe4e4", "maps_to": "background_card" },
